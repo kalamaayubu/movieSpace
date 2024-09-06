@@ -13,7 +13,7 @@ function HamburgerMenu() {
     }
 
   return (
-    <div className="m-auto absolute right-3 sm:right-5 lg:right-6 xl:right-7 2xl:right-9 top-[39%]">
+    <div className="m-auto absolute right-4 sm:right-5 lg:right-6 xl:right-7 2xl:right-9 top-[35%]">
       <FontAwesomeIcon 
         icon={ faBars }
         onClick={handleMenuClick}
