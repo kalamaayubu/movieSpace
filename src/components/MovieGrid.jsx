@@ -44,7 +44,7 @@ function MovieGrid() {
     useEffect(() => {
         setMovies([]); // Clear the UI when a request is made
         const fetchAllPages = async () => {
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 1; i++) {
                 await fetchMovies(i);            
             }
         };
@@ -75,6 +75,7 @@ function MovieGrid() {
                     key={movie.id}
                     image={`${imageBaseUrl}${movie.poster_path}`}
                     name={movie.title}
+                    movieData={movie} // Pass movieData prop to movieCard 
                 />
             ))
         ) : (

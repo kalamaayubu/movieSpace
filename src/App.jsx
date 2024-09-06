@@ -16,7 +16,7 @@ function App() {
   const [isVisible, setIsVisible] = useState(false); // State to manage menu visibility. The menu is invisible in the initial render
   const [searchText, setSearchText] = useState(""); // State to manage input search text
   const [showHistory, setShowHistory] = useState(false); // State to manage the showing and hiding of history component
-  const [watchingPage, setWatchingPage] = useState(false); // State to manage the showing and hiding of WatchingPage component
+  const [watchingPage, setWatchingPage] = useState(null); // Changed to store movie data
 
   return (
     <div className="relative">
@@ -28,7 +28,7 @@ function App() {
               <MenuList/>
               <MovieGrid/>
               <History/>
-              <WatchingPage/>
+              {watchingPage && <WatchingPage movie={watchingPage}/>} {/* Conditionally render WatchingPage */}
             </WatchingPageContext.Provider>
           </HistoryContext.Provider>
         </SearchTextContext.Provider>
