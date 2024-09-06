@@ -44,7 +44,7 @@ function MovieGrid() {
     useEffect(() => {
         setMovies([]); // Clear the UI when a request is made
         const fetchAllPages = async () => {
-            for (let i = 1; i <= 1; i++) {
+            for (let i = 1; i <= 5; i++) {
                 await fetchMovies(i);            
             }
         };

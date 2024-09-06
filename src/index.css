@@ -2,3 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Use @layer directive to scope the css styles to specific components */
+@layer utilities {
+    .watching-page-scrollbar-hide::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+    .watching-page-scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
