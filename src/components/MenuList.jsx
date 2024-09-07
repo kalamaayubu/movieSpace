@@ -45,7 +45,7 @@ function MenuList() {
   return (
     <div 
         ref={menuRef} 
-        className={`fixed top-6 bottom-0 right-0 bg-gray-100 transition-all duration-[800ms] z-30
+        className={`fixed top-6 bottom-0 right-0 z-30 bg-gray-100 dark:bg-gray-900 text-black dark:text-white transition-all duration-[800ms]
         ${isVisible ? 'opacity-100 w-[50%]' : 'opacity-0 w-[0%]'}`}
     >
         <FontAwesomeIcon 
@@ -53,14 +53,14 @@ function MenuList() {
             className="mt-1 ml-2 px-1 font-bold text-2xl border ring-1 ring-black cursor-pointer transition-all duration-[300ms] hover:text-red-600"
             onClick={hideMenuList}
         />
-        <ul className="flex flex-col justify-center w-full gap-1 pt-5">
+        <ul className="flex flex-col absolute left-[2%] justify-center w-[96%] gap-1 pt-5 align-center">
             <li 
                 onClick={openHistory}
-                className="w-full px-3 py-2 cursor-pointer transition-all duration-[400ms] hover:bg-gray-300 odd:bg-gray-400"
+                className="w-full px-3 py-2 cursor-pointer transition-all duration-[500ms] hover:bg-gray-300 odd:bg-gray-400  bg-gray-100 dark:bg-gray-950 text-black dark:text-white"
             >
                 History
             </li>
-            <li className="w-full px-3 py-2 cursor-pointer transition-all duration-[400ms] hover:bg-gray-200 even:bg-gray-300">Theme</li>
+            <li className="w-full px-3 py-2 cursor-pointer transition-all duration-[500ms] hover:bg-gray-200 even:bg-gray-300 bg-white dark:bg-gray-950 text-black dark:text-white">Theme</li>
         </ul>
     </div>
   )

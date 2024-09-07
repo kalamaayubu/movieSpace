@@ -12,7 +12,7 @@ function MovieGrid() {
     const [ error, setError ] = useState(false);
 
     
-    const apiKey = '70030b36507f13c90e43c4f21156be7d';
+    const apiKey = import.meta.env.VITE_THE_MOVIE_DATABASE_API_KEY;
     const baseUrl = 'https://api.themoviedb.org/3/search/movie';
     // Async function to fetch movies from an API
     const fetchMovies = async (pageNum) => {
