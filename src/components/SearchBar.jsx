@@ -28,7 +28,7 @@ function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`m-auto flex items-center ${ searchInputIsVisible ? 'border rounded-full' : ''}`} >
+    <form onSubmit={handleSubmit} className={`m-auto flex items-center ${ searchInputIsVisible ? 'border border-gray-300 rounded-full' : ''}`} >
       <input 
         type="text" 
         ref={searchInputRef}

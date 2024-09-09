@@ -1,12 +1,24 @@
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { WatchingPageContext } from '../App';
 
 
-function MovieCard({ image, name, movieData }) {
+function MovieCard({ image, name, movieData, onImageLoad }) {
   const { setWatchingPage } = useContext(WatchingPageContext); //  Use setWatchingPage from the WatchingPageContext 
+  const [isImageLoading, setIsImageLoading] = useState(true); // Track image loading state
+
+  // Handle image load event 
+  const handleImageLoad = () => {
+    setIsImageLoading(false);
+    onImageLoad(); // Notify the parent that the image has loaded
+  }
+  // Handle image error event
+  const handleImageError = () => {
+    setIsImageLoading(false); // Handle errors (like broken links) gracefully
+    onImageLoad(); // Notify the parent component about the load completion
+  };
 
   // Function to open the watching page with movie details
   const openWatchPage = () => {
@@ -15,11 +27,13 @@ function MovieCard({ image, name, movieData }) {
 
   return (
     <div className='relative group'>
-      <div className="bg-green-200 shadow-md rounded-sm overflow-hidden h-[250px] z-0">
-        {/* Movie poster */}
+      <div className={`bg-green-200 shadow-md rounded-sm overflow-hidden h-[250px] z-0 ${isImageLoading ? 'animate-pulse' : ''}`}>
+      {/* Movie poster */}
           <img 
               src={image}
               alt={name}
+              onLoad={handleImageLoad}
+              onError={handleImageError}
               className="w-full h-full object-cover"
           />
       </div>
@@ -41,6 +55,7 @@ MovieCard.propTypes = {
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     movieData: PropTypes.object.isRequired,
+    onImageLoad: PropTypes.func,
 };
 
 export default MovieCard
