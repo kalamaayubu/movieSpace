@@ -39,7 +39,7 @@ function App() {
   }
 
   return (
-    <div className="relative bg-white dark:bg-gray-950 text-black dark:text-white transition-all duration-[800ms]">
+    <div className="relative bg-white dark:bg-gray-950 text-black dark:text-white transition-all duration-[0ms]">
       <MenuListContext.Provider value={{ isVisible, setIsVisible }}>
         <SearchTextContext.Provider value={{ searchText, setSearchText }}>
           <HistoryContext.Provider value={{ showHistory, setShowHistory, searchHistory, setSearchHistory, addSearchToHistory }}>

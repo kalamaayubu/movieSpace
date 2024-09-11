@@ -37,7 +37,7 @@ function MovieCard({ image, name, movieData, onImageLoad }) {
               className="w-full h-full object-cover"
           />
       </div>
-      <div className='absolute bottom-0 left-0 right-0 top-0 z-15 opacity-0 bg-black group-hover:opacity-70 transition-all duration-[300ms] flex justify-center align-center'>
+      <div className='absolute bottom-0 left-0 right-0 top-0 z-15 opacity-0 bg-black group-hover:opacity-70 transition-all duration-[0ms] flex justify-center align-center'>
         <button onClick={openWatchPage} className='p-0'>
           <FontAwesomeIcon icon={faPlay} className='hover:text-white text-gray-400 font-semibold text-2xl cursor-pointer'/>
         </button>

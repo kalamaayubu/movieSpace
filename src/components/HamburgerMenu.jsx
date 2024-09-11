@@ -13,11 +13,11 @@ function HamburgerMenu() {
     }
 
   return (
-    <div className="absolute right-4 sm:right-5 lg:right-6 xl:right-7 2xl:right-9 top-[35%] flex justify-between align-center">
+    <div className="absolute right-4 sm:right-5 lg:right-6 xl:right-7 2xl:right-9 top-[38%] flex justify-between align-center">
       <FontAwesomeIcon 
         icon={ faBars }
         onClick={handleMenuClick}
-        className="text-2xl cursor-pointer"
+        className="text-xl font-extralight cursor-pointer"
     />
     </div>
   )

@@ -11,7 +11,7 @@ function Header() {
   const { isDarkMode } = useContext(ThemeTogglingContext);
 
   return (
-    <div className='z-20 w-screen h-[80px] xl:h-[100px] flex justify-evenly align-center px-2 shadow-lg fixed bg-white dark:bg-gray-950 dark:border-b-[1px] dark:border-gray-900 text-black dark:text-white transition-colors duration-[800ms]'>
+    <div className='z-20 w-screen h-[80px] xl:h-[100px] flex justify-evenly align-center px-2 shadow-lg fixed bg-white dark:bg-gray-950 dark:border-b-[1px] dark:border-gray-900 text-black dark:text-white transition-colors duration-[0ms]'>
       {/* Conditionally render dark or light logo according to the theme */}
       {isDarkMode ? 
         <img src={darkLogo} alt='Logo' className='transition-all duration-[900ms]'/> : 
