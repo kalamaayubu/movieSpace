@@ -5,7 +5,6 @@ import MovieCard from "./MovieCard";
 import SkeletonLoader from "./CardSkeletonLoader";
 
 
-
 function MovieGrid() {
     const { searchText } = useContext(SearchTextContext);
     const [ movies, setMovies ] = useState([]);
@@ -14,7 +13,6 @@ function MovieGrid() {
     const [loadedImagesCount, setLoadedImagesCount] = useState();
 
 
-    
     const apiKey = import.meta.env.VITE_THE_MOVIE_DATABASE_API_KEY;
     const baseUrl = 'https://api.themoviedb.org/3/search/movie';
     // Async function to fetch movies from an API
@@ -43,16 +41,24 @@ function MovieGrid() {
         };
     };
 
-    // useEffect hook to conduct a search every time the search text changes
-    useEffect(() => {
-        setMovies([]); // Clear the UI when a request is made
+    // Listen for the custom 'fetchMovies' event from searchBar submited searchText
+    useEffect(() => {    
+        // Function to fetch all pages
         const fetchAllPages = async () => {
-            for (let i = 1; i <= 1; i++) {
+            setMovies([]); // Clear previous search results
+            for (let i = 1; i <= 2; i++) { // Example: Fetching pages from 1 to 2
                 await fetchMovies(i);            
             }
         };
-        fetchAllPages();
+        // Add event listener for custom event 'fetchMovies'(Listens for the 'fetchMovies')
+        window.addEventListener('fetchMovies', fetchAllPages);
+    
+        // Cleanup listener on component unmount
+        return () => {
+            window.removeEventListener('fetchMovies', fetchAllPages);
+        };
     }, [searchText]);
+    
 
     useEffect(() => {
         if (movies.length > 0) {
@@ -86,7 +92,7 @@ function MovieGrid() {
                 .map((movie) => [movie.id, movie]) // Create a map to remove duplicates by id
         ).values() // Extract unique movies from the map
     );
-    console.log(uniqueMovies);
+    // console.log(uniqueMovies);
 
     // Image baseUrl for fetching movie images(posters)
     const imageBaseUrl =`https://image.tmdb.org/t/p/w500`;
@@ -105,13 +111,6 @@ function MovieGrid() {
             ))
         ) : (
             <>
-                {/* <div style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }} className="grid gap-[5px] p-4 items-center pt-[100px] xl:pt-[130px]"> */}
-                    {/* {Array.from({ length: 6 }).map((_, index) => ( // Show 6 skeleton loaders
-                        <SkeletonLoader key={index} />
-                    ))} */}
-                {/* </div> */}
-                {/* <p className="font-extrabold text-[25px] sm:text-[34px] text-center">No result found for your search.</p>
-                <p className="font-semibold text-[20px] sm:text-[22px] text-center">Please try another search term.</p> */}
             </>
         )}
     </div>
