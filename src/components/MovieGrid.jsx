@@ -15,6 +15,36 @@ function MovieGrid() {
 
     const apiKey = import.meta.env.VITE_THE_MOVIE_DATABASE_API_KEY;
     const baseUrl = 'https://api.themoviedb.org/3/search/movie';
+
+    // Function to fetch latest movies
+    const latestBaseUrl = 'https://api.themoviedb.org/3/movie/now_playing';
+    const fetchLatestMovies = async () => {
+        let allMovies = []; // Holds all movies
+
+        // Fetch from pages 1 to 5 to get more movies
+        for(let pageNum = 1; pageNum <= 5; pageNum++) {
+            const randomPageNum = Math.floor(Math.random() * 200) + 1;
+            const url = `${latestBaseUrl}?api_key=${apiKey}&page=${randomPageNum}`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const latestMovies = await response.json();
+
+                // Combine the results
+                allMovies = allMovies.concat(latestMovies.results);
+                setMovies(allMovies);
+            } catch (error) {
+                console.error('Error occured fetching movies:', error);
+            } 
+        }
+    };
+
+    // Fetch latest movies on conponent mount
+    useEffect(() => {
+        fetchLatestMovies();
+    }, []);
+
     // Async function to fetch movies from an API
     const fetchMovies = async (pageNum) => {
         if (searchText.trim() == "") return; // Do nothing when the search input is empty
@@ -46,7 +76,7 @@ function MovieGrid() {
         // Function to fetch all pages
         const fetchAllPages = async () => {
             setMovies([]); // Clear previous search results
-            for (let i = 1; i <= 2; i++) { // Example: Fetching pages from 1 to 2
+            for (let i = 1; i <= 50; i++) { // Example: Fetching pages from 1 to 2
                 await fetchMovies(i);            
             }
         };
