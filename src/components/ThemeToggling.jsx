@@ -22,7 +22,7 @@ function ThemeToggling() {
   }, [isDarkMode]);
 
   return (
-    <div className="right-[60px] sm:right-[64px] md:right-[68px] lg:right-[72px] xl:right-[76px] 2xl:right-[80px] top-[25%] absolute">
+    <div className="right-[60px] hidden sm:right-[64px] md:right-[68px] lg:right-[72px] xl:right-[76px] 2xl:right-[80px] top-[25%] absolute">
       <FontAwesomeIcon 
         onClick={toggleTheme}
         icon={isDarkMode ? faSun : faMoon}

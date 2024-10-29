@@ -13,7 +13,7 @@ function HamburgerMenu() {
     }
 
   return (
-    <div className="absolute right-4 sm:right-5 lg:right-6 xl:right-7 2xl:right-9 top-[38%] flex justify-between align-center">
+    <div className="absolute right-6 sm:right-7 lg:right-8 xl:right-8 2xl:right-9 top-[38%] flex justify-between align-center">
       <FontAwesomeIcon 
         icon={ faBars }
         onClick={handleMenuClick}

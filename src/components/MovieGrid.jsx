@@ -76,7 +76,7 @@ function MovieGrid() {
         // Function to fetch all pages
         const fetchAllPages = async () => {
             setMovies([]); // Clear previous search results
-            for (let i = 1; i <= 50; i++) { // Example: Fetching pages from 1 to 2
+            for (let i = 1; i <= 20; i++) { // Example: Fetching pages from 1 to 2
                 await fetchMovies(i);            
             }
         };
@@ -104,7 +104,7 @@ function MovieGrid() {
     if (loading) {
         return (
             <div style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }} className="grid gap-[5px] p-4 items-center pt-[100px] xl:pt-[130px]">
-                {Array.from({ length: 6 }).map((_, index) => ( // Show 6 skeleton loaders
+                {Array.from({ length: 20 }).map((_, index) => ( // Show 6 skeleton loaders
                     <SkeletonLoader key={index} />
                 ))}
             </div>

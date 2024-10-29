@@ -18,8 +18,6 @@ function History() {
 
     // Function to handle reload
     const handleHistoryReload = (searchTerm) => {
-
-        setSearchText(''); // Clear the search input field
         setShowHistory(false);  // Hide the history
         setSearchText(searchTerm); // Set the new search term (from the history)
 
