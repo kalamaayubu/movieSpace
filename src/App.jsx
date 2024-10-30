@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import Header from "./components/Header";
 import MenuList from "./components/MenuList";
 import MovieGrid from "./components/MovieGrid";
@@ -14,17 +14,7 @@ export const ThemeTogglingContext = createContext(); // Creating a context(to be
 
 function App() {
   // State to manage theme (initailize based on user preferences or local storage)
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('isDarkMode');
-    return savedTheme ? JSON.parse(savedTheme) : false;
-  }); 
-
-  // Sync theme with local storage
-  useEffect(() => {
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
-
-
+  const [isDarkMode, setIsDarkMode] = useState(true);
   // Other states
   const [isVisible, setIsVisible] = useState(false); // State to manage menu visibility. The menu is invisible in the initial render
   const [searchText, setSearchText] = useState(""); // State to manage input search text

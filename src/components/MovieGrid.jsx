@@ -22,7 +22,7 @@ function MovieGrid() {
         let allMovies = []; // Holds all movies
 
         // Fetch from pages 1 to 5 to get more movies
-        for(let pageNum = 1; pageNum <= 5; pageNum++) {
+        for(let pageNum = 1; pageNum <= 10; pageNum++) {
             const randomPageNum = Math.floor(Math.random() * 200) + 1;
             const url = `${latestBaseUrl}?api_key=${apiKey}&page=${randomPageNum}`;
 
@@ -76,7 +76,7 @@ function MovieGrid() {
         // Function to fetch all pages
         const fetchAllPages = async () => {
             setMovies([]); // Clear previous search results
-            for (let i = 1; i <= 20; i++) { // Example: Fetching pages from 1 to 2
+            for (let i = 1; i <= 10; i++) { // Example: Fetching pages from 1 to 2
                 await fetchMovies(i);            
             }
         };
